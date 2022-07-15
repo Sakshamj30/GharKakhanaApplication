@@ -10,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Food {
@@ -22,10 +19,10 @@ public class Food {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long foodId;
 	
-	@NotNull(message = "foodIdentifier Required")
-	@Range(min=100, max=1000, message = "invalid foodIdentifier")
+	@NotBlank(message = "foodIdentifier Required")
+	@Size(min=3, max=10, message = "invalid foodIdentifier")
 	@Column(updatable = false, unique = true)
-	private Long foodIdentifier;
+	private String foodIdentifier;
 	
 	@NotBlank(message = "foodName is required")
 	private String foodName;
@@ -53,11 +50,11 @@ public class Food {
 		this.foodId = foodId;
 	}
 	
-	public Long getFoodIdentifier() {
+	public String getFoodIdentifier() {
 		return foodIdentifier;
 	}
 
-	public void setFoodIdentifier(Long foodIdentifier) {
+	public void setFoodIdentifier(String foodIdentifier) {
 		this.foodIdentifier = foodIdentifier;
 	}
 

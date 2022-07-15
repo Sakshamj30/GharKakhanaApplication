@@ -8,4 +8,9 @@ import com.capgemini.gharkakhana.domain.Food;
 @Repository
 public interface FoodRepository extends CrudRepository<Food, Long> {
 
+	Food findByFoodIdentifier(String foodIdentifier);
+	
+	Iterable<Food>findAll();
+	
+	
 }

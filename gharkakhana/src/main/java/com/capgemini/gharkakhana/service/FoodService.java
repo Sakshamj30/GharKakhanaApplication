@@ -6,4 +6,9 @@ public interface FoodService {
 	
 	public Food saveOrUpdate(Food food);
 
+	public Food findFoodByFoodIdentifier(String foodIdentifier);
+	
+	public Iterable<Food> findAllFood();
+	
+	public void deleteFoodByFoodIdentifier(String foodIdentifier);
 }
